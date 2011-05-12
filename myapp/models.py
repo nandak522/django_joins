@@ -16,10 +16,16 @@ class Question(models.Model):
     description = models.CharField(max_length=500, blank=True, null=True)
     raised_by = models.ForeignKey(User)
     
+    def __unicode__(self):
+        return self.title
+    
 class Answer(models.Model):
     description = models.CharField(max_length=500, blank=True, null=True)
     given_by = models.ForeignKey(User)
     question = models.ForeignKey(Question)
+    
+    def __unicode__(self):
+        return self.description
 
 class QuestionComment(models.Model):
     description = models.CharField(max_length=200)
@@ -37,7 +43,8 @@ class Reputation(models.Model):
 
 class Follower(models.Model):
     user = models.ForeignKey(User)
-    following = models.ForeignKey(User)
+    following = models.ForeignKey(User, related_name='all_followers')
     
 class Mention(models.Model):
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(User, related_name='all_mentions')
+    count = models.IntegerField(default=0)
