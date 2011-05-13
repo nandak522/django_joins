@@ -35,7 +35,7 @@ class QuestionComment(models.Model):
 class AnswerComment(models.Model):
     description = models.CharField(max_length=200)
     author = models.ForeignKey(User)
-    question = models.ForeignKey(Answer)
+    answer = models.ForeignKey(Answer)
     
 class Reputation(models.Model):
     user = models.ForeignKey(User)
