@@ -1,1 +1,1 @@
-Trying Sql Joins with Django's ORM
+Trying Complex Sql Joins with Django's ORM
